@@ -39,16 +39,16 @@ Vagrant.configure("2") do |config|
   #
   # In the following section, we make use of two plugins for Vagrant to add network hosts entries
   # to both your local (host) machine and the virtual (guest) machine. Only the default domain,
-  # wp.wsu.edu in this configuration, is provided.
+  # search.wsu.dev in this configuration, is provided.
   #
   # Add a `custom-wsuwp-hosts` file to this Vagrant directory and provide additional hosts there
   # when required. These should be added as one host per line.
   #############################################################################
 
-  # Parse through the `*-wsuwp-hosts` files in each of the found paths and put the hosts
+  # Parse through the `*-wsusearch-hosts` files in each of the found paths and put the hosts
   # that are found into a single array.
   paths = []
-  Dir.glob(vagrant_dir + '/*-wsuwp-hosts').each do |path|
+  Dir.glob(vagrant_dir + '/*-wsusearch-hosts').each do |path|
     paths << path
   end
 
@@ -66,7 +66,7 @@ Vagrant.configure("2") do |config|
 
   # Local Machine Hosts (/etc/hosts on the host)
   #
-  # If the Vagrant plugin hostsupdater is installed, this project's `*-wsuwp-hosts` files will
+  # If the Vagrant plugin hostsupdater is installed, this project's `*-wsusearch-hosts` files will
   # be parsed and the entries found will be added to your local machine's hosts file so that
   # you are able to access the server configured inside the guest machine.
   #
@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
 
   # Virtual Machine Hosts (/etc/hosts on the guest)
   #
-  # If the Vagrant plugin vagrant-hosts is installed, this project's `*-wsuwp-hosts` files will
+  # If the Vagrant plugin vagrant-hosts is installed, this project's `*-wsusearch-hosts` files will
   # be parsed and the entries found will be added to the virtual machine's hosts file so that
   # it is able to access itself at those network addresses.
   #
@@ -96,7 +96,7 @@ Vagrant.configure("2") do |config|
 
     WARNING
 
-    The vagrant-hosts plugin is recommended to ensure proper functionality with the WSUWP Platform. Use the
+    The vagrant-hosts plugin is recommended to ensure proper functionality with WSU Search. Use the
     following command to install this plugin before continuing:
 
     vagrant plugin install vagrant-hosts
