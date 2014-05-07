@@ -30,6 +30,10 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "wsusearch-dev"
   config.vm.network :private_network, ip: "10.10.60.60"
 
+  # Mount the local project's pillar/ directory as /srv/pillar inside the virtual machine. This allows
+  # us to pass arbitrary data to Salt during provisioning.
+  config.vm.synced_folder "pillar", "/srv/pillar", :mount_options => [ "dmode=775", "fmode=664" ]
+
   #############################################################################
   # Automatic Hosts Entries
   #
