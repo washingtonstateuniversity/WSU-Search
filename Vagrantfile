@@ -114,6 +114,7 @@ ERRORSS
     cp -fr /tmp/wsu-web/provision/salt /srv/
     cp /tmp/wsu-web/provision/salt/config/local.yum.conf /etc/yum.conf
     sh /tmp/wsu-web/provision/bootstrap_salt.sh -K stable
+    mkdir /etc/salt/minion.d/
     rm /etc/salt/minion.d/*.conf
     cp /srv/salt/minions/wsu-search.conf /etc/salt/minion.d/
     salt-call --local --log-level=info --config-dir=/etc/salt state.highstate
