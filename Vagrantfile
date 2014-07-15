@@ -108,9 +108,9 @@ ERRORSS
 
   $script =<<SCRIPT
     cd /tmp && rm -fr wsu-web
-    cd /tmp && curl -o wsu-web.zip -L https://github.com/washingtonstateuniversity/wsu-web-provisioner/archive/wsu-search.zip
+    cd /tmp && curl -o wsu-web.zip -L https://github.com/washingtonstateuniversity/wsu-web-provisioner/archive/master.zip
     cd /tmp && unzip wsu-web.zip
-    cd /tmp && mv WSU-Web-Provisioner-wsu-search wsu-web
+    cd /tmp && mv WSU-Web-Provisioner-master wsu-web
     cp -fr /tmp/wsu-web/provision/salt /srv/
     cp /tmp/wsu-web/provision/salt/config/local.yum.conf /etc/yum.conf
     sh /tmp/wsu-web/provision/bootstrap_salt.sh -K stable
