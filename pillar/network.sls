@@ -7,3 +7,9 @@ network:
   nameservers: |
     nameserver 8.8.8.8
     nameserver 8.8.4.4
+
+jira-config:
+  database: wsuwp
+  db_user: wsuwp_prod
+  db_pass: Pr0!d84WP32c0r
+  db_host: 127.0.0.1
