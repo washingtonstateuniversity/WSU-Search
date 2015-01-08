@@ -108,14 +108,18 @@ ERRORSS
 
   $script =<<SCRIPT
     cd /tmp && rm -fr wsu-web
-    cd /tmp && curl -o wsu-web.zip -L https://github.com/washingtonstateuniversity/wsu-web-provisioner/archive/master.zip
+    cd /tmp && curl -o wsu-web.zip -L https://github.com/washingtonstateuniversity/wsu-web-provisioner/archive/jira-config.zip
     cd /tmp && unzip wsu-web.zip
-    cd /tmp && mv WSU-Web-Provisioner-master wsu-web
+    cd /tmp && mv WSU-Web-Provisioner-jira-config wsu-web
     cp -fr /tmp/wsu-web/provision/salt /srv/
     cp /tmp/wsu-web/provision/salt/config/local.yum.conf /etc/yum.conf
+    rpm -Uvh --force http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+    sed -i 's/mirrorlist=https/mirrorlist=http/' /etc/yum.repos.d/epel.repo
     sh /tmp/wsu-web/provision/bootstrap_salt.sh -K stable
     mkdir /etc/salt/minion.d/
     rm /etc/salt/minion.d/*.conf
+    rm /etc/salt/minion_id
+    echo "wsusearch-dev" > /etc/salt/minion_id
     cp /srv/salt/minions/wsu-search.conf /etc/salt/minion.d/
     salt-call --local --log-level=info --config-dir=/etc/salt state.highstate
 SCRIPT
